@@ -1,6 +1,12 @@
 package com.ferma.terenuri_agricole.parcela;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="teren")
 public class Teren {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_teren;
     private String denumire;
     private double suprafata;

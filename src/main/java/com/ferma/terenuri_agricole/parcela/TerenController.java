@@ -1,8 +1,7 @@
 package com.ferma.terenuri_agricole.parcela;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,6 +10,7 @@ import java.util.List;
 public class TerenController {
     private  final TerenService terenService;
 
+    @Autowired
     public TerenController(TerenService terenService) {
         this.terenService = terenService;
     }
@@ -18,5 +18,11 @@ public class TerenController {
     @GetMapping
     public List<Teren> getTerenuri(){
         return terenService.getTerenuri();
+    }
+
+    @PostMapping
+    public void registerNewTeren(
+            @RequestBody Teren teren){
+        terenService.addNewTeren(teren);
     }
 }
