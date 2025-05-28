@@ -25,4 +25,9 @@ public class TerenController {
             @RequestBody Teren teren){
         terenService.addNewTeren(teren);
     }
+    @DeleteMapping(path = "{terenId}")
+    public void deleteTeren(@PathVariable("terenId") Long id_teren){
+        terenService.deleteStudent(id_teren);
+    }
+
 }

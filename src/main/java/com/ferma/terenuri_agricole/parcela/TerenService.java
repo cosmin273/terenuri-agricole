@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class TerenService {
     private final TerenRepository terenRepository;
@@ -18,6 +20,20 @@ public class TerenService {
     }
 
     public void addNewTeren(Teren teren) {
+        Optional<Teren> terenByDenumire= terenRepository.findTerenByDenumire(teren.getDenumire());
+        if(terenByDenumire.isPresent()){
+            throw new IllegalStateException("denumire taken");
+        }
+        terenRepository.save(teren);
         System.out.println(teren);
     }
+
+    public void deleteStudent(Long teren_id) {
+        boolean exists = terenRepository.existsById(teren_id);
+        if(!exists){
+            throw new IllegalStateException("teren with id "+ teren_id + " does not exist");
+        }
+        terenRepository.deleteById(teren_id);
+    }
+
 }
