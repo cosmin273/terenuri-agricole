@@ -27,7 +27,13 @@ public class TerenController {
     }
     @DeleteMapping(path = "{terenId}")
     public void deleteTeren(@PathVariable("terenId") Long id_teren){
-        terenService.deleteStudent(id_teren);
+        terenService.deleteTeren(id_teren);
+    }
+    @PutMapping(path = "{terenId}")
+    public void updateTeren(@PathVariable("terenId") Long terenId,
+                            @RequestParam(required = false) String denumire,
+                            @RequestParam(required = false)String numeProprietar){
+                        terenService.updateTeren(terenId,denumire,numeProprietar);
     }
 
 }

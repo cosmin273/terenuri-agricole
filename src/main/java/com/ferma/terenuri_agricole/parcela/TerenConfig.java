@@ -10,7 +10,7 @@ import java.util.List;
 @Configuration
 public class TerenConfig {
 
-    @Bean
+    /*@Bean
     CommandLineRunner commandLineRunner(TerenRepository repository){
         return args -> {
             Teren teren1=new Teren(
@@ -26,7 +26,7 @@ public class TerenConfig {
                     "gheroghita",
                     "Dealu fastacului");
             repository.saveAll(List.of(teren1,teren2));
-        };
+        };*/
 
-    }
+    //}
 }
