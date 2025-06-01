@@ -3,6 +3,7 @@ package com.ferma.terenuri_agricole.coordonate;
 import com.ferma.terenuri_agricole.parcela.TerenRepository;
 import com.ferma.terenuri_agricole.parcela.TerenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,10 @@ public class CoordonateController {
     public void registerNewCoordonata(@RequestBody Coordonate coordonate){
         coordonateService.addNewCoordonata(coordonate);
     }
-
+    @DeleteMapping("/{teren_idTeren}")
+    public ResponseEntity<String> deleteCoordonateByIdTeren(@PathVariable Long teren_idTeren){
+        coordonateService.deleteCoordonateByTeren_IdTeren(teren_idTeren);
+        return ResponseEntity.ok("Coordinatele terenului cu id-ul "+teren_idTeren+" au fost sterse.");
+    }
 
 }

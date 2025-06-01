@@ -21,9 +21,9 @@ public class TerenController {
     }
 
     @PostMapping
-    public void registerNewTeren(
+    public Teren registerNewTeren(
             @RequestBody Teren teren){
-        terenService.addNewTeren(teren);
+        return terenService.addNewTeren(teren);
     }
     @DeleteMapping(path = "{terenId}")
     public void deleteTeren(@PathVariable("terenId") Long id_teren){

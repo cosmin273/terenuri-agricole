@@ -1,4 +1,4 @@
-package com.ferma.terenuri_agricole;
+package com.ferma.terenuri_agricole.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

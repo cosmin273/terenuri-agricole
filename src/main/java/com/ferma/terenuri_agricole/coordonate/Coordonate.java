@@ -7,11 +7,13 @@ import jakarta.persistence.*;
 public class Coordonate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_coordonate")
     private Long id;
     private double lat;
+    @Column(name = "lng")
     private double lon;
     @ManyToOne
-    @JoinColumn(name = "teren_id",nullable = false)
+    @JoinColumn(name = "teren_id_teren",nullable = false)
     private Teren teren;
 
     public Coordonate() {

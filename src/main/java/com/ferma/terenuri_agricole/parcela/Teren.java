@@ -5,9 +5,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="teren")
 public class Teren {
+    @Column(name = "id_teren")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_teren;
+    private long idTeren;
     private String denumire;
     private double suprafata;
     private double perimetru;
@@ -17,8 +18,8 @@ public class Teren {
     public Teren() {
     }
 
-    public Teren(long id_teren, String denumire, double suprafata, double perimetru, String nume_proprietar, String zona) {
-        this.id_teren = id_teren;
+    public Teren(long idTeren, String denumire, double suprafata, double perimetru, String nume_proprietar, String zona) {
+        this.idTeren = idTeren;
         this.denumire = denumire;
         this.suprafata = suprafata;
         this.perimetru = perimetru;
@@ -34,12 +35,12 @@ public class Teren {
         this.zona = zona;
     }
 
-    public long getId_teren() {
-        return id_teren;
+    public long getIdTeren() {
+        return idTeren;
     }
 
-    public void setId_teren(long id_teren) {
-        this.id_teren = id_teren;
+    public void setIdTeren(long idTeren) {
+        this.idTeren = idTeren;
     }
 
     public String getDenumire() {
@@ -85,7 +86,7 @@ public class Teren {
     @Override
     public String toString() {
         return "Teren{" +
-                "id_teren=" + id_teren +
+                "id_teren=" + idTeren +
                 ", denumire='" + denumire + '\'' +
                 ", suprafata=" + suprafata +
                 ", perimetru=" + perimetru +

@@ -1,6 +1,8 @@
 package com.ferma.terenuri_agricole.coordonate;
 
 import com.ferma.terenuri_agricole.parcela.Teren;
+import com.ferma.terenuri_agricole.parcela.TerenRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +12,12 @@ import java.util.Optional;
 @Service
 public class CoordonateService {
     private final CoordonateRepository coordonateRepository;
+    private final TerenRepository terenRepository;
 
     @Autowired
-    public CoordonateService(CoordonateRepository coordonateRepository) {
+    public CoordonateService(CoordonateRepository coordonateRepository, TerenRepository terenRepository) {
         this.coordonateRepository = coordonateRepository;
+        this.terenRepository = terenRepository;
     }
 
 
@@ -22,14 +26,30 @@ public class CoordonateService {
     }
 
     public void addNewCoordonata(Coordonate coordonate) {
-        Optional<Coordonate> coordonateExistente=coordonateRepository.findByALl(
+        Long terenId = coordonate.getTeren().getIdTeren();
+
+        // Încarci terenul din DB (dacă nu există, arunci excepție)
+        Teren teren = terenRepository.findById(terenId)
+                .orElseThrow(() -> new IllegalStateException("Terenul cu id " + terenId + " nu există."));
+
+        // Setezi terenul persistent pe coordonată
+        coordonate.setTeren(teren);
+
+        Optional<Coordonate> coordonateExistente = coordonateRepository.findByLatAndLonAndTeren_IdTeren(
                 coordonate.getLat(),
                 coordonate.getLon(),
-                coordonate.getTeren().getId_teren()
+                terenId
         );
-        if(coordonateExistente.isPresent()){
-            throw new IllegalStateException("Coordonatele deja exista pentru acest teren.");
+
+        if (coordonateExistente.isPresent()) {
+            throw new IllegalStateException("Coordonatele deja există pentru acest teren.");
         }
+
         coordonateRepository.save(coordonate);
+    }
+
+@Transactional
+    public void deleteCoordonateByTeren_IdTeren(Long idTeren) {
+        coordonateRepository.deleteByTeren_IdTeren(idTeren);
     }
 }

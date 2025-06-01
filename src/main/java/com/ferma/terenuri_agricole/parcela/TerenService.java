@@ -21,13 +21,14 @@ public class TerenService {
         return terenRepository.findAll();
     }
 
-    public void addNewTeren(Teren teren) {
+    public Teren addNewTeren(Teren teren) {
         Optional<Teren> terenByDenumire= terenRepository.findTerenByDenumire(teren.getDenumire());
         if(terenByDenumire.isPresent()){
             throw new IllegalStateException("denumire taken");
         }
-        terenRepository.save(teren);
+        Teren savedTeren = terenRepository.save(teren);
         System.out.println(teren);
+        return savedTeren;
     }
 
     public void deleteTeren(Long teren_id) {
