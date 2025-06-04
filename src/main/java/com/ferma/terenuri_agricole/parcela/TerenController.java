@@ -1,9 +1,12 @@
 package com.ferma.terenuri_agricole.parcela;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/teren")
@@ -21,9 +24,14 @@ public class TerenController {
     }
 
     @PostMapping
-    public Teren registerNewTeren(
+    public ResponseEntity<?> registerNewTeren(
             @RequestBody Teren teren){
-        return terenService.addNewTeren(teren);
+        try{
+            Teren savedTeren=terenService.addNewTeren(teren);
+            return ResponseEntity.ok(savedTeren);
+        }catch (IllegalStateException e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message",e.getMessage()));
+        }
     }
     @DeleteMapping(path = "{terenId}")
     public void deleteTeren(@PathVariable("terenId") Long id_teren){
