@@ -1,6 +1,10 @@
 package com.ferma.terenuri_agricole.parcela;
 
+import com.ferma.terenuri_agricole.productie.Productie;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="teren")
@@ -14,6 +18,8 @@ public class Teren {
     private double perimetru;
     private String nume_proprietar;
     private String zona;
+    @OneToMany(mappedBy = "teren",cascade = CascadeType.ALL,orphanRemoval = true)
+    List<Productie> productii = new ArrayList<>();
 
     public Teren() {
     }

@@ -24,7 +24,12 @@ public class CoordonateService {
     public List<Coordonate> getCoordonate() {
         return coordonateRepository.findAll();
     }
-
+    public List<Coordonate> getCoordonateByTeren_IdTeren(Long teren_IdTeren){
+        if(!terenRepository.existsById(teren_IdTeren)){
+            throw new IllegalStateException("Terenul cu id "+teren_IdTeren+" nu exista");
+        }
+        return coordonateRepository.findAllByTeren_IdTeren(teren_IdTeren);
+    }
     public void addNewCoordonata(Coordonate coordonate) {
         Long terenId = coordonate.getTeren().getIdTeren();
 

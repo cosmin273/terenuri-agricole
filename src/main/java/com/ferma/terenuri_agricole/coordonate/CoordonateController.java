@@ -22,6 +22,10 @@ public class CoordonateController {
     public List<Coordonate> getCoorodonate(){
         return coordonateService.getCoordonate();
     }
+    @GetMapping("/teren/{teren_IdTeren}")
+    public List<Coordonate> getCoordonateByTeren(@PathVariable Long teren_IdTeren) {
+        return coordonateService.getCoordonateByTeren_IdTeren(teren_IdTeren);
+    }
     @PostMapping
     public void registerNewCoordonata(@RequestBody Coordonate coordonate){
         coordonateService.addNewCoordonata(coordonate);
@@ -29,7 +33,7 @@ public class CoordonateController {
     @DeleteMapping("/{teren_idTeren}")
     public ResponseEntity<String> deleteCoordonateByIdTeren(@PathVariable Long teren_idTeren){
         coordonateService.deleteCoordonateByTeren_IdTeren(teren_idTeren);
-        return ResponseEntity.ok("Coordinatele terenului cu id-ul "+teren_idTeren+" au fost sterse.");
+        return ResponseEntity.ok("Coordoonatele terenului cu id-ul "+teren_idTeren+" au fost sterse.");
     }
 
 }
