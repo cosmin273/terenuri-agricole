@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/lucrari-aplicate")
+@RequestMapping("/api/v1/lucrare-aplicata")
 public class LucrareAplicataController {
 
     private final LucrareAplicataService service;
