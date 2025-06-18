@@ -3,11 +3,13 @@ package com.ferma.terenuri_agricole.aplicareHibrid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/aplicari-hibrid")
+@RequestMapping("/api/v1/aplicari-hibrid")
 public class AplicareHibridController {
 
     private final AplicareHibridService service;
@@ -28,6 +30,13 @@ public class AplicareHibridController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/{id}/tip-samanta")
+    public String getTipSamanta(@PathVariable Long id) {
+        return (String) service.getTipSamantaByAplicareId(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
 
     @PostMapping
     public AplicareHibrid create(@RequestBody AplicareHibrid aplicare) {

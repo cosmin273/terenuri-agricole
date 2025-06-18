@@ -43,4 +43,7 @@ public class ProductieService {
 
         return productieRepository.save(existing);
     }
+    public List<Productie> getByAnAgricol(int anAgricol) {
+        return productieRepository.findByAnAgricol(anAgricol);
+    }
 }

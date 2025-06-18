@@ -1,5 +1,6 @@
 package com.ferma.terenuri_agricole.aplicareHibrid;
 
+import com.ferma.terenuri_agricole.hibrid.Hibrid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +43,9 @@ public class AplicareHibridService {
 
         return repository.save(existing);
     }
+
+    public Optional<String> getTipSamantaByAplicareId(Long aplicareId) {
+        return repository.findTipSamantaByAplicareId(aplicareId);
+    }
+
 }

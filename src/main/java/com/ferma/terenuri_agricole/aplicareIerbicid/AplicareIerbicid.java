@@ -4,7 +4,8 @@ import com.ferma.terenuri_agricole.ierbicid.Ierbicid;
 import com.ferma.terenuri_agricole.lucrare_aplicata.LucrareAplicata;
 import jakarta.persistence.*;
 
-@Entity(name = "aplicare_ierbicide")
+@Entity
+@Table(name = "aplicareierbicid")
 public class AplicareIerbicid {
 
     @Id

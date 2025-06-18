@@ -1,8 +1,11 @@
 package com.ferma.terenuri_agricole.hibrid;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "hibrid")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Hibrid {
 
     @Id

@@ -5,6 +5,7 @@ import com.ferma.terenuri_agricole.lucrare_aplicata.LucrareAplicata;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "aplicarehibrid")
 public class AplicareHibrid {
 
     @Id

@@ -28,6 +28,10 @@ public class ProductieController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    @GetMapping("/an/{anAgricol}")
+    public List<Productie> getByAnAgricol(@PathVariable int anAgricol) {
+        return productieService.getByAnAgricol(anAgricol);
+    }
 
     @PostMapping
     public Productie create(@RequestBody Productie productie) {
