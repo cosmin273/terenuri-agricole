@@ -28,6 +28,13 @@ public class LucrareAplicataController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    @GetMapping("/teren/{terenId}/an/{an}")
+    public List<AplicareInfo> getByTerenAndAn(
+            @PathVariable Long terenId,
+            @PathVariable int an
+    ) {
+        return service.getAplicariByTerenAndAn(terenId, an);
+    }
 
     @PostMapping
     public LucrareAplicata create(@RequestBody LucrareAplicata lucrareAplicata) {

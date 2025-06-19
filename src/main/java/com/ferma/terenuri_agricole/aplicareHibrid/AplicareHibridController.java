@@ -36,7 +36,7 @@ public class AplicareHibridController {
         return (String) service.getTipSamantaByAplicareId(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-
+        
 
     @PostMapping
     public AplicareHibrid create(@RequestBody AplicareHibrid aplicare) {

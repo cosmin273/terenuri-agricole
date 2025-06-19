@@ -45,4 +45,7 @@ public class LucrareAplicataService {
 
         return repository.save(existing);
     }
+    public List<AplicareInfo> getAplicariByTerenAndAn(Long terenId, int anAgricol) {
+        return repository.findAplicariByTerenAndAn(terenId, anAgricol);
+    }
 }

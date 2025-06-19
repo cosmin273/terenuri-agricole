@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface LucrareAplicataRepository extends JpaRepository<LucrareAplicata,Long> {
     @Query("""
@@ -17,4 +19,17 @@ public interface LucrareAplicataRepository extends JpaRepository<LucrareAplicata
       WHERE la.anAgricol = :anAgricol
     """)
     double getTotalMotorinaByAn(@Param("anAgricol") int anAgricol);
+
+    @Query("""
+        select la.dataAplicare      as dataAplicare,
+               la.lucrare.tip       as numeLucrare
+        from LucrareAplicata la
+        where la.teren.idTeren     = :terenId
+          and la.anAgricol         = :anAgricol
+        order by la.dataAplicare
+        """)
+    List<AplicareInfo> findAplicariByTerenAndAn(
+            @Param("terenId")   Long terenId,
+            @Param("anAgricol") Integer anAgricol
+    );
 }
