@@ -22,9 +22,10 @@ public class TerenService {
     }
 
     public Teren addNewTeren(Teren teren) {
-        Optional<Teren> terenByDenumire= terenRepository.findTerenByDenumire(teren.getDenumire());
+        Optional<Teren> terenByDenumire= terenRepository.
+                findTerenByDenumire(teren.getDenumire());
         if(terenByDenumire.isPresent()){
-            throw new IllegalStateException("denumire taken");
+            throw new IllegalStateException("denumirea a fost deja folosită");
         }
         Teren savedTeren = terenRepository.save(teren);
         System.out.println(teren);

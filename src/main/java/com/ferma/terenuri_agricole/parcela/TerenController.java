@@ -30,7 +30,8 @@ public class TerenController {
             Teren savedTeren=terenService.addNewTeren(teren);
             return ResponseEntity.ok(savedTeren);
         }catch (IllegalStateException e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message",e.getMessage()));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.
+                    of("message",e.getMessage()));
         }
     }
     @DeleteMapping(path = "{terenId}")

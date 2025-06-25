@@ -43,9 +43,13 @@ public class AplicareHibridService {
 
         return repository.save(existing);
     }
-
-    public Optional<String> getTipSamantaByAplicareId(Long aplicareId) {
-        return repository.findTipSamantaByAplicareId(aplicareId);
+    public Optional<AplicareHibrid> getByLucrareAplicataId(Long lucrareId) {
+        return repository.findByLucrareAplicataId(lucrareId);
     }
+
+
+    /*public Optional<String> getTipSamantaByAplicareId(Long aplicareId) {
+        return repository.findTipSamantaByAplicareId(aplicareId);
+    }*/
 
 }

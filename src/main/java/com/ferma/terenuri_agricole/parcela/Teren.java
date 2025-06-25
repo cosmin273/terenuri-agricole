@@ -18,13 +18,15 @@ public class Teren {
     private double perimetru;
     private String nume_proprietar;
     private String zona;
-    @OneToMany(mappedBy = "teren",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "teren",
+            cascade = CascadeType.ALL,orphanRemoval = true)
     List<Productie> productii = new ArrayList<>();
 
     public Teren() {
     }
 
-    public Teren(long idTeren, String denumire, double suprafata, double perimetru, String nume_proprietar, String zona) {
+    public Teren(long idTeren, String denumire, double suprafata,
+                 double perimetru, String nume_proprietar, String zona) {
         this.idTeren = idTeren;
         this.denumire = denumire;
         this.suprafata = suprafata;
@@ -33,7 +35,8 @@ public class Teren {
         this.zona = zona;
     }
 
-    public Teren(String denumire, double suprafata, double perimetru, String nume_proprietar, String zona) {
+    public Teren(String denumire, double suprafata, double perimetru,
+                 String nume_proprietar, String zona) {
         this.denumire = denumire;
         this.suprafata = suprafata;
         this.perimetru = perimetru;

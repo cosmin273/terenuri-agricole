@@ -13,7 +13,8 @@ public class Hibrid {
     @Column(name = "id_hibrid")
     private Long id;
 
-    private String tip_samanta;
+    @Column(name = "tip_samanta")
+    private String tipSamanta;
     private String denumire;
     private String provenienta;
 
@@ -21,14 +22,14 @@ public class Hibrid {
     }
 
     public Hibrid(String tip_samanta, String denumire, String provenienta) {
-        this.tip_samanta = tip_samanta;
+        this.tipSamanta = tip_samanta;
         this.denumire = denumire;
         this.provenienta = provenienta;
     }
 
     public Hibrid(Long id, String tip_samanta, String denumire, String provenienta) {
         this.id = id;
-        this.tip_samanta = tip_samanta;
+        this.tipSamanta = tip_samanta;
         this.denumire = denumire;
         this.provenienta = provenienta;
     }
@@ -42,11 +43,11 @@ public class Hibrid {
     }
 
     public String getTip_samanta() {
-        return tip_samanta;
+        return tipSamanta;
     }
 
     public void setTip_samanta(String tip_samanta) {
-        this.tip_samanta = tip_samanta;
+        this.tipSamanta = tip_samanta;
     }
 
     public String getDenumire() {

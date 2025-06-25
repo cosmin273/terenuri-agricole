@@ -31,10 +31,14 @@ public class AplicareHibridController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}/tip-samanta")
-    public String getTipSamanta(@PathVariable Long id) {
-        return (String) service.getTipSamantaByAplicareId(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    @GetMapping("/lucrare/{lucrareId}/tip-samanta")
+    public ResponseEntity<String> getTipSamantaByLucrare(
+            @PathVariable Long lucrareId) {
+
+        return service.getByLucrareAplicataId(lucrareId)
+                .map(a -> a.getHibrid().getTip_samanta())
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
         
 
