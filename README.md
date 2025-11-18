@@ -68,5 +68,4 @@ The application uses a normalized relational database designed in **MySQL Workbe
 
 ## 📬 Contact
 **Cosmin Bolohan**
-* **LinkedIn:** [Adaugă link-ul tău de LinkedIn aici]
-* [cite_start]**Email:** cosmin_273@yahoo.com [cite: 404]
+* [**Email:** cosmin_273@yahoo.com
