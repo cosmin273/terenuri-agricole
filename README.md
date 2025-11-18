@@ -34,7 +34,8 @@ The application uses a normalized relational database designed in **MySQL Workbe
     * [cite_start]**1:N**: One Land has multiple Production records[cite: 112].
     * [cite_start]**Cascade Deletion:** Deleting a Land automatically removes associated coordinates and activity logs to maintain integrity[cite: 82].
 
-*(Recomandare: Pune aici poza cu Figura 3.1 din licență - Diagrama EER)*
+<img width="779" height="610" alt="image" src="https://github.com/user-attachments/assets/b35fbeed-6ee2-44a2-813f-c163ecaa8723" />
+
 
 ## ⚙️ Setup & Installation
 
@@ -48,8 +49,8 @@ The application uses a normalized relational database designed in **MySQL Workbe
     * Configure `src/main/resources/application.properties`:
     ```properties
     spring.datasource.url=jdbc:mysql://localhost:3306/terenuri_db
-    spring.datasource.username=YOUR_USER
-    spring.datasource.password=YOUR_PASSWORD
+    spring.datasource.username=user
+    spring.datasource.password=Ypassword
     spring.jpa.hibernate.ddl-auto=update
     ```
 
